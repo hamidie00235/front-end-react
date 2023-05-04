@@ -1,4 +1,4 @@
-import {Container, Button ,Input,Grid,Textarea,Stack} from '@mantine/core';
+import {Container, Button,Input,Grid,Textarea,Stack} from '@mantine/core';
 import './App.css';
 import Card from './components/Card';
 import{useState} from "react";
@@ -61,7 +61,14 @@ label="Paragraph"/>
   <Grid>
   {list.map (({par,title}, i) => (
      <Grid.Col span={4} key={`index ${i}`}>
-      <Card par={par} title={title}  /></Grid.Col>
+      <Card par={par} title={title} i={i} click={() => {
+        let copyList=[...list]
+        copyList.splice(i, 1)
+        setList(copyList);
+      }
+      }
+      />
+      </Grid.Col>
 
 ))}
   </Grid>

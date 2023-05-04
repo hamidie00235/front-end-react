@@ -1,6 +1,6 @@
-import { Card, Image, Text,  Button, Group } from '@mantine/core';
+import { Card, Image, Text, CloseButton, Button, Group } from '@mantine/core';
 
-const cardComponents =({title,par ,lesson}) =>{
+const cardComponents =({title,par ,i,click}) =>{
     return(
 
 
@@ -15,6 +15,7 @@ const cardComponents =({title,par ,lesson}) =>{
 
       <Group position="apart" mt="md" mb="xs">
         <Text weight={500}>{title}</Text>
+        <CloseButton aria-label="Close modal"  onClick={click} />
        
       </Group>
 
