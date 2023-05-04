@@ -1,4 +1,4 @@
-import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
+import { Card, Image, Text,  Button, Group } from '@mantine/core';
 
 const cardComponents =({title,par ,lesson}) =>{
     return(
@@ -15,9 +15,7 @@ const cardComponents =({title,par ,lesson}) =>{
 
       <Group position="apart" mt="md" mb="xs">
         <Text weight={500}>{title}</Text>
-        {/* <Badge color="pink" variant="light">
-          On Sale
-        </Badge> */}
+       
       </Group>
 
       <Text size="sm" color="dimmed">
