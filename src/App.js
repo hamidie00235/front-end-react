@@ -1,4 +1,4 @@
-import { queryByTitle } from '@testing-library/react';
+import {Container, Button ,Input,Grid,Textarea,Stack} from '@mantine/core';
 import './App.css';
 import Card from './components/Card';
 import{useState} from "react";
@@ -23,34 +23,45 @@ par:"explaination"},
 par:"explaination"},];
 
 const App= () => {
-  const[lesson,setLesson]=useState(11);
+  const[title,setTitle]=useState("");
+  const[paragraph,setParagraph]=useState("");
+  const[list,setList]=useState(arr);
+  const[lesson,setLesson]=useState([]);
+  const click=() => {
+    setTitle("");
+    setParagraph("");
+     const copyList=[...list];
+     copyList.push({
+          id: 5,
+          title,
+          par:paragraph
 
+     });
+     setList(copyList);
+  };
 return( 
-  <div>
-<h1>baslik</h1>
-<h2>{lesson}</h2>
-<button onClick={() =>{ 
-  setLesson(lesson +1);
-}}
->
-  ders arttir 
-</button>
-<button onClick={() =>{ 
-  setLesson(lesson -1);
-}}
->
-  ders azalt
+  <Container>
+   
+<h1>Kart oluşturma programı</h1>
+<Stack>
+<Input.Wrapper label="Başlık">
+  <Input  placeholder="Başlık yazınız" value={title} onChange={(e) => setTitle(e.target.value)}/>
+</Input.Wrapper>
+<Textarea placeholder="Paragraph  yazınız"   value={paragraph} onChange={(e) => setParagraph(e.target.value)}
+label="Paragraph"/>
 
-  
-</button>
 
-  <div className="Cards">
-  {arr.map (({par,title},i) => (
-<Card key={`index ${i}`}par={par} title={title} lesson={lesson} />
+<Button variant="outline"  onClick={click}>Kart oluşturma </Button>
+</Stack>
+  <h2>Kartlar</h2>
+  <Grid>
+  {list.map (({par,title},i) => (
+     <Grid.Col span={4} key={`index ${i}`}>
+      <Card par={par} title={title} lesson={lesson} /></Grid.Col>
+
 ))}
-  </div>
-  </div>
-
+  </Grid>
+  </Container>
 );
   };
   
